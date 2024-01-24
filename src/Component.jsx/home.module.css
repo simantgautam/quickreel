@@ -1,0 +1,23 @@
+.home {
+  position: relative;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+
+  /* Create a pseudo-element for the background */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://i.pinimg.com/originals/e9/41/0a/e9410a2a43321170680fa2e6b2532e9c.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: blur(15px); /* Adjust the blur amount as needed */
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
+  }
+}
