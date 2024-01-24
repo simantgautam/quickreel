@@ -1,7 +1,4 @@
 import React from "react";
-import Navbar from "../Navbar";
-import Cut from "../Cut";
-import Upload from "../Upload";
 import Home from "../Home";
 import { Route, Routes } from "react-router-dom";
 

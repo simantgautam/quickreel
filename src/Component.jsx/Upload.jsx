@@ -2,11 +2,13 @@ import { Box, Flex, Button } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 import File from "./AudioFile";
 import WaveSurfer from "wavesurfer.js";
-import WaveformPlayer from "./WaveformPlayer";
 
 function Upload(props) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [url, setUrl] = useState("");
+
   const waveformRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     // Initialize WaveSurfer when the component mounts
@@ -16,6 +18,7 @@ function Upload(props) {
         waveColor: "violet",
         progressColor: "purple",
         responsive: true,
+        url: url && url,
       });
     }
   }, []);
@@ -26,7 +29,6 @@ function Upload(props) {
     if (file) {
       setSelectedFile(file);
       const objectUrl = URL.createObjectURL(file);
-      // Load audio file into the waveform
       waveformRef.current.load(objectUrl);
     }
   };
@@ -36,6 +38,11 @@ function Upload(props) {
       alert("Please select a file first.");
       return;
     }
+  };
+
+  const handlePlay = () => {
+    waveformRef.current.play();
+    videoRef.current.play();
   };
 
   const isAudio = selectedFile && selectedFile.type.startsWith("audio/");
@@ -72,12 +79,24 @@ function Upload(props) {
                 <audio
                   style={{ margin: "20px auto" }}
                   controls
+                  ref={videoRef}
+                  onPlay={handlePlay}
+                  onPause={() => {
+                    waveformRef.current.pause();
+                    videoRef.current.pause();
+                  }}
                   src={URL.createObjectURL(selectedFile)}
                 ></audio>
               )}
               {isVideo && (
                 <video
                   controls
+                  ref={videoRef}
+                  onPlay={handlePlay}
+                  onPause={() => {
+                    waveformRef.current.pause();
+                    videoRef.current.pause();
+                  }}
                   width="400"
                   style={{ margin: "20px auto" }}
                   src={URL.createObjectURL(selectedFile)}

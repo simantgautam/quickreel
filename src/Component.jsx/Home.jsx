@@ -2,9 +2,7 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import Navbar from "./Navbar";
 import styles from "./home.module.css";
-import File from "./AudioFile";
 import Upload from "./Upload";
-import Cut from "./Cut";
 
 function Home({ comp }) {
   console.log(comp);
@@ -24,7 +22,6 @@ function Home({ comp }) {
         </Box>
       </Box>
       {comp === 1 ? <Upload /> : <></>}
-      {comp === 2 ? <Cut /> : <></>}
     </Box>
   );
 }
