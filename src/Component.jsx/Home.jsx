@@ -3,8 +3,11 @@ import React from "react";
 import Navbar from "./Navbar";
 import styles from "./home.module.css";
 import File from "./AudioFile";
+import Upload from "./Upload";
+import Cut from "./Cut";
 
-function Home(props) {
+function Home({ comp }) {
+  console.log(comp);
   return (
     <Box className={styles["home"]}>
       <Box w={"90%"} m={"auto"} pb={50}>
@@ -20,9 +23,8 @@ function Home(props) {
           </Text>
         </Box>
       </Box>
-      <Box bgColor={"#8D438E"} mt={50}>
-        <File />
-      </Box>
+      {comp === 1 ? <Upload /> : <></>}
+      {comp === 2 ? <Cut /> : <></>}
     </Box>
   );
 }

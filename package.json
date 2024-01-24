@@ -13,8 +13,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.14.1",
+    "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
-    "wavesurfer.js": "^7.6.5",
+    "wavesurfer.js": "^7.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/wavesurfer.js": "^6.0.12"
   }
 }
